@@ -46,9 +46,18 @@ class messageController {
             const token = req.headers.token.split(' ')[1]
 			const decoded = jwt.decode(token)
 			const userId = decoded.id
-            const query = `SELECT DISTINCT message_from, message_to FROM message WHERE message_from=${userId}`
+            const query = `
+            SELECT DISTINCT 
+                CASE 
+                    WHEN message_from = ? THEN message_to 
+                    ELSE message_from 
+                END AS message_to
+            FROM message
+            WHERE message_from = ? OR message_to = ?
+        `
+			const params = [userId, userId, userId]
 
-            req.db(query, [userId], (error, result)=>{
+            req.db(query, params, (error, result)=>{
                 if(error){
                     console.log(error);
                 }
@@ -70,9 +79,16 @@ class messageController {
 		const decoded = jwt.decode(token)
 		const userId = decoded.id
         try{
-            const query = `SELECT * FROM message WHERE message_from=${userId} AND message_to=${id}`
+            const query = `
+            SELECT * 
+            FROM message 
+            WHERE (message_from = ? AND message_to = ?) 
+               OR (message_from = ? AND message_to = ?)
+        `
 
-            req.db(query,(error, result)=>{
+			const params = [userId, id, id, userId]
+
+            req.db(query,params,(error, result)=>{
                 if(error){
                     console.log(error);
                 }
