@@ -1,0 +1,3 @@
+server: expressJs, mySql2, validator(какой-нибудь), cors, dotenv
+
+client: react, styled-components, effector, socketio, routerDOM
