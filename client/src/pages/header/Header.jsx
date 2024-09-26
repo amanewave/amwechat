@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import SvgLogo from '../../assets/logo.svg'
 import { Button } from '../../components/button/Button'
 import { Modal } from '../../components/modal/Modal';
+import { SearchBar } from '../../components/search/Search';
 
 export const Header = () => {
     const[btnValue, setBtnValue] = useState('Войти')
@@ -13,8 +14,12 @@ export const Header = () => {
         <GlobalWrapper>
             <Logo src={SvgLogo}/>
 
+            <SearchBar/>
+
             <Button value={btnValue} width={'100px'} onClick={()=>setModalActive(true)} />
             {modalActive && <Modal setActive={setModalActive} />}
+
+
 
         </GlobalWrapper>
         </>

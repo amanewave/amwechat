@@ -46,8 +46,14 @@ const ModalContent = styled.div`
 `
 
 const StyledClose = styled.img`
-	position:absolute;
-	right:20px;
-	top:20px;
-	width:20px;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	width: 20px;
+	&:hover {
+		width: 24px;
+		right: 18px;
+		top: 18px;
+		cursor: pointer;
+	}
 `

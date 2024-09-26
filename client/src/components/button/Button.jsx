@@ -11,8 +11,13 @@ export const Button = (props) => {
 };
 
 const StyledButton = styled.button`
-    background-color:#30cc9b;
-    border:1px solid black;
-    padding:10px 15px;
-    width:${props=>props.width || '100%'};
+	background-color: ${props => props.color || '#30cc9b'};
+	border: 1px solid black;
+	padding: 10px 15px;
+	width: ${props => props.width || '100%'};
+    border-radius:5px;
+    cursor: pointer;
+	&:hover {
+		background-color:#29a880;
+	}
 `
