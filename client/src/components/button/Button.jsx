@@ -13,11 +13,12 @@ export const Button = (props) => {
 const StyledButton = styled.button`
 	background-color: ${props => props.color || '#30cc9b'};
 	border: 1px solid black;
-	padding: 10px 15px;
+	padding: ${props => props.pad || '10px 15px'};
 	width: ${props => props.width || '100%'};
-    border-radius:5px;
-    cursor: pointer;
+	font-size: ${props => props.fz || '22px'};
+	border-radius: 5px;
+	cursor: pointer;
 	&:hover {
-		background-color:#29a880;
+		background-color: #29a880;
 	}
 `

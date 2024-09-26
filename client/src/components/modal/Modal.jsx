@@ -15,11 +15,15 @@ export const Modal = ({active, setActive}) => {
 					<StyledInput placeholder={'enter login'} width={'60%'} />
 					<ModalText>Введите пароль</ModalText>
 					<StyledInput placeholder={'enter password'} width={'60%'} />
-					<Button width={'50%'} value={'Войти'}/>
+					<StyledButton width={'50%'} value={'Войти'} fz={'20px'}/>
 				</ModalContent>
 			</ModalWrapper>
 		)
 };
+
+const StyledButton = styled(Button)`
+`
+
 
 const ModalWrapper = styled.div`
     height:100vh;
@@ -51,9 +55,7 @@ const StyledClose = styled.img`
 	top: 20px;
 	width: 20px;
 	&:hover {
-		width: 24px;
-		right: 18px;
-		top: 18px;
+		scale:1.2;
 		cursor: pointer;
 	}
 `

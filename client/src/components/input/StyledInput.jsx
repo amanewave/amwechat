@@ -7,7 +7,7 @@ export const StyledInput = (props) => {
 
 const StInput = styled.input`
 	padding: 10px 15px;
-	border: 1px solid black;
+	outline: 1px solid black;
 	margin-bottom: 30px;
 	font-size: 16px;
 	width: ${props =>props.width || '100%'}
