@@ -16,15 +16,6 @@ export const Header = () => {
 					<Logo src={SvgLogo} />
 
 					<SearchBar />
-
-					<Button
-						value={btnValue}
-						width={'100px'}
-                        pad={'15px 15px'}
-                        fz={'17px'}
-						onClick={() => setModalActive(true)}
-					/>
-					{modalActive && <Modal setActive={setModalActive} />}
 				</GlobalWrapper>
 			</>
 		)
@@ -32,11 +23,12 @@ export const Header = () => {
 
 
 const GlobalWrapper = styled.div`
-    margin:0;
-    height:8vh;
-    display:flex;
-    align-items:center;
-    justify-content:space-around;
+	margin: 0;
+	height: 8vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	background-color: #222323;
 `
 
 const Logo = styled.img`

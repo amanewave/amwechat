@@ -11,7 +11,8 @@ export const Button = (props) => {
 };
 
 const StyledButton = styled.button`
-	background-color: ${props => props.color || '#30cc9b'};
+	background-color: ${props => props.color || '#4d4e4e'};
+	color: white;
 	border: 1px solid black;
 	padding: ${props => props.pad || '10px 15px'};
 	width: ${props => props.width || '100%'};
@@ -19,6 +20,7 @@ const StyledButton = styled.button`
 	border-radius: 5px;
 	cursor: pointer;
 	&:hover {
-		background-color: #29a880;
+		background-color: #6da0a0;
+		color: black;
 	}
 `

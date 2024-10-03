@@ -5,12 +5,12 @@ import { StyledInput } from '../input/StyledInput';
 import { ModalText } from './ModalText';
 import { Button } from '../button/Button';
 
-
+//<StyledClose src={Close} onClick={()=>setActive(false)} />
 export const Modal = ({active, setActive}) => { 
     return (
-			<ModalWrapper onClick={()=>{setActive(false)}}>
+			<ModalWrapper>
 				<ModalContent onClick={e => e.stopPropagation()}>
-					<StyledClose src={Close} onClick={()=>setActive(false)} />
+					
 					<ModalText>Введите логин</ModalText>
 					<StyledInput placeholder={'enter login'} width={'60%'} />
 					<ModalText>Введите пароль</ModalText>

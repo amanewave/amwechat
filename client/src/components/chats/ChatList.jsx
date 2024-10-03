@@ -6,7 +6,9 @@ export const ChatList = () => {
     return (
 			<Wrapper>
 				<HeaderText>Ваши чаты</HeaderText>
-				<StyledSearch />
+				<div style={{padding:'10px', display:'flex', width:'100%'}}>
+					<StyledSearch />
+				</div>
 
 				<ChatsWrapper>
 					<Item>фывфывфыв</Item>
@@ -37,12 +39,11 @@ const HeaderText = styled.h3`
     margin:20px 0px;
 `
 const StyledSearch = styled(StyledInput)`
-    width:300px;
     padding:10px 15px;
     font-size:16px;
-    margin-top:25px;
     border-radius:20px;
     border:1px;
+	flex-grow:1;
 `
 
 const ChatsWrapper = styled.div`

@@ -6,6 +6,7 @@ import { Dropdown } from './Dropdown';
 export const SearchBar = () => {
 	const [dropdownActive, setDropdownActive] = useState(false)
 	const wrapperRef = useRef(null)
+	const [searchActive, setSearchActive] = useState(false)
 	
 	const clickOutside = e => {
 		if(!(wrapperRef.current.contains(e.target))){
@@ -20,6 +21,9 @@ export const SearchBar = () => {
 		}
 	}, [])
 
+	console.log(searchActive);
+	
+
     return (
 			<Wrapper ref={wrapperRef}>
 				<SearchBarWrapper>
@@ -29,9 +33,12 @@ export const SearchBar = () => {
 						onClick={e => {
 							e.stopPropagation()
 							setDropdownActive(true)
+					
 						}}
+						onFocus={e => setSearchActive(true)}
+						onBlur={e => setSearchActive(false)}
 					/>
-					<StyledSearchLohgo src={SearchIcon} />
+					<StyledSearchLogo src={SearchIcon} isActive={searchActive}/>
 				</SearchBarWrapper>
 				{dropdownActive && <Dropdown setDropdownActive={setDropdownActive} />}
 			</Wrapper>
@@ -43,9 +50,10 @@ const SearchBarWrapper = styled.div`
 `
 
 const Wrapper = styled.div`
-	display:flex;
-	flex-direction:column;
-	align-items:center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
 `
 
 const StyledInput = styled.input`
@@ -54,18 +62,29 @@ const StyledInput = styled.input`
 	border-top-left-radius: 20px;
 	border-bottom-left-radius: 20px;
 	border: 1px solid black;
+	background-color: #4d4e4e;
+	&:focus {
+		outline: none;
+		color: white;
+		border: 2px solid #6da0a0;
+		border-right: none;
+	}
+	&::placeholder {
+		color: white;
+		font-family: Arial, Helvetica, sans-serif;
+		opacity: 0.5;
+	}
 	border-right: none;
-    &:focus{
-        outline:none;
-    }
 `
 
-const StyledSearchLohgo = styled.img`
-	width: 20px;
-	padding-right: 20px;
-	border: 1px solid black;
+const StyledSearchLogo = styled.img`
+	width: 35px;
+	padding-right: 10px;
+	border: ${props =>
+		props.isActive ? '2px solid #6da0a0' : '1px solid black'};
 	border-left: none;
 	border-top-right-radius: 20px;
 	border-bottom-right-radius: 20px;
-    cursor: pointer;
+	cursor: pointer;
+	background-color: #4d4e4e;
 `
