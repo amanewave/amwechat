@@ -24,7 +24,7 @@ export const Header = () => {
 
 const GlobalWrapper = styled.div`
 	margin: 0;
-	height: 8vh;
+	height: 60px;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;

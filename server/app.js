@@ -5,9 +5,11 @@ const app = express()
 const mysql = require('mysql2')
 const router = require('./routers/index')
 const connectionMiddleware = require('./middleware/connectionMiddleware')
+const cookieParser = require('cookie-parser')
+
 
 const port = process.env.PORT
-
+app.use(cookieParser())
 app.use(cors())
 app.use(express.json())
 app.use(connectionMiddleware)
