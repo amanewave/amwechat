@@ -6,6 +6,8 @@ module.exports = function(req, res, next){
         next()
     }
 
+    console.log(req.cookie)
+
     try{
         const token = req.headers.token.split(' ')[1]
 

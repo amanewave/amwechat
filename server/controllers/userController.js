@@ -18,6 +18,9 @@ class userController {
 			const insertQuery =
 				'INSERT INTO user (username, password, age, email) VALUES (?, ?, ?, ?)'
 			const selectQuery = 'SELECT * FROM user'
+
+
+
 			
 
 			await new Promise((resolve, reject) => {
@@ -53,8 +56,8 @@ class userController {
 			const dbUserName = users[users.length - 1].username
 
 			const token = generateAccessToken(dbId, dbUserName)
-
-			return res.json(token)
+			
+			return res.cookie('acessToken', token, { maxAge: 900000, httpOnly: true }).json('access true')
 		} catch (e) {
 			console.error(e)
 			return res.json({ message: 'Error' })
@@ -81,9 +84,11 @@ class userController {
 					return res.json({ message: 'incorrect password' })
 				}
 
+				res.cookie
+
 				const dbUserName = result[0].username
 				const dbId = result[0].id_user
-
+				
 				const token = generateAccessToken(dbId, dbUserName)
 
 				return res.json(token)
