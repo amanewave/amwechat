@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const Dropdown = ({}) => {
+export const Dropdown = ({searhHistory}) => {
+
+	
     return (
 			<Wrapper>
 				<DropdownContent>
-					<Item>mashhala</Item>
-					<Item>hehehe</Item>
-					<Item>kekeke</Item>
-					<Item>dagestan</Item>
+					<Item>
+					
+					</Item>
 				</DropdownContent>
 			</Wrapper>
 		)
@@ -28,7 +29,7 @@ const DropdownContent = styled.div`
 	font-size: 22px;
 	display: flex;
 	flex-direction: column;
-	margin: 20px 0px;
+	margin: 10px 0px;
 `
 
 const Item = styled.div`

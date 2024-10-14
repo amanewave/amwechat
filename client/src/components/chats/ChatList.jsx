@@ -26,15 +26,14 @@ const chats = [
 	},
 ]
 
-export const ChatList = () => {
+export const ChatList = ({setActiveChat}) => {
 	const [value, setValue] = useState('')
 
-	console.log(value)
 
 	const filtredChats = chats.filter(user => user.username.toLowerCase().indexOf(value.toLowerCase()) > -1)
 
 	const ChatUser = filtredChats.map(user => (
-		<Item>
+		<Item onClick={()=>setActiveChat(user)} >
 			<div>
 				<StyledProfileIcon src={user.img} />
 			</div>
@@ -86,7 +85,6 @@ const StyledSearch = styled(StyledInput)`
 const ChatsWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
 	overflow-y: scroll;
 	padding-left: 10px;
 	width: 100%;
@@ -108,6 +106,11 @@ const Item = styled.div`
 	display: flex;
 	align-items: center;
 	width:80%;
+	padding:10px 20px;
+	&:hover{
+		background-color:red;
+		cursor: pointer;
+	}
 `
 
 const StyledProfileIcon = styled.img`

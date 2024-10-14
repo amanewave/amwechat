@@ -3,10 +3,25 @@ import styled from 'styled-components';
 import SearchIcon from '../../assets/search.svg'
 import { Dropdown } from './Dropdown';
 
+
+
 export const SearchBar = () => {
 	const [dropdownActive, setDropdownActive] = useState(false)
 	const wrapperRef = useRef(null)
 	const [searchActive, setSearchActive] = useState(false)
+	const [searchValue, setSearchValue] = useState('')
+	const [searchHistory, setSearchHistory] = useState([]) 
+	
+
+	const submitSearch = (e) => {
+		if (e.key === 'Enter') {
+			const value = e.target.value
+			setSearchValue(value)
+			e.target.value = ''
+			setSearchHistory(prevHistory => [...prevHistory, value])
+		}
+	}
+
 	
 	const clickOutside = e => {
 		if(!(wrapperRef.current.contains(e.target))){
@@ -21,11 +36,8 @@ export const SearchBar = () => {
 		}
 	}, [])
 
-	console.log(searchActive);
-	
-
     return (
-			<Wrapper ref={wrapperRef}>
+			<Wrapper ref={wrapperRef} onKeyDown={submitSearch}>
 				<SearchBarWrapper>
 					<StyledInput
 						width={'300px'}
@@ -40,7 +52,7 @@ export const SearchBar = () => {
 					/>
 					<StyledSearchLogo src={SearchIcon} isActive={searchActive}/>
 				</SearchBarWrapper>
-				{dropdownActive && <Dropdown setDropdownActive={setDropdownActive} />}
+				{dropdownActive && <Dropdown searhHistory={searchValue} setDropdownActive={setDropdownActive} />}
 			</Wrapper>
 		)
 };
