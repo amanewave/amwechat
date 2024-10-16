@@ -24,6 +24,16 @@ const chats = [
 		username: 'Илюха',
 		id: 4,
 	},
+	{
+		img: ProfileIcon,
+		username: 'некит',
+		id: 5,
+	},
+	{
+		img: ProfileIcon,
+		username: 'некит братишка',
+		id: 6,
+	},
 ]
 
 export const ChatList = ({setActiveChat}) => {

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import SearchIcon from "../../assets/search.svg";
 import { Dropdown } from "./Dropdown";
 
@@ -32,10 +32,14 @@ export const SearchBar = () => {
     };
   }, []);
 
+
+
+
   return (
     <Wrapper ref={wrapperRef} onKeyDown={submitSearch}>
       <SearchBarWrapper>
         <StyledInput
+          isDropdownOpen = {dropdownActive}
           width={"300px"}
           placeholder="find users"
           onClick={(e) => {
@@ -69,31 +73,47 @@ const Wrapper = styled.div`
 `;
 
 const StyledInput = styled.input`
-  padding: 10px 20px;
-  font-size: 22px;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border: 1px solid black;
-  background-color: #4d4e4e;
-  &:focus {
-    outline: none;
-    color: white;
-    border: 2px solid #6da0a0;
-    border-right: none;
-  }
-  &::placeholder {
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    opacity: 0.5;
-  }
-  border-right: none;
-`;
+	padding: 10px 20px;
+	font-size: 22px;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border: 1px solid black;
+	background-color: #4d4e4e;
+
+	&:focus {
+		outline: none;
+		color: white;
+		border-right: none;
+		&::placeholder {
+			color: #11f0b0;
+		}
+	}
+
+	&::placeholder {
+		color: white;
+		font-family: Arial, Helvetica, sans-serif;
+		opacity: 0.5;
+	}
+
+	border-right: none;
+
+
+	${({ isDropdownOpen }) =>
+		isDropdownOpen &&
+		css`
+			outline: none;
+			color: white;
+			border-right: none;
+			&::placeholder {
+				color: #11f0b0;
+			}
+		`}
+`
 
 const StyledSearchLogo = styled.img`
   width: 35px;
   padding-right: 10px;
-  border: ${(props) =>
-    props.isActive ? "2px solid #6da0a0" : "1px solid black"};
+  border:1px solid black;
   border-left: none;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;

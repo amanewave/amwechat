@@ -18,7 +18,12 @@ export const HistoryItem = ({ elem, i, arr, setSearchHistory }) => {
       <ItemWrapper>
         {elem}
         {historyElemActive && (
-          <StyledClose src={CloseIcon} onClick={removeFromHistory} />
+          <StyledClose src={CloseIcon} 
+          onClick={(e)=>{
+            removeFromHistory()
+            e.stopPropagation()
+                        }
+          } />
         )}
       </ItemWrapper>
     </Item>
