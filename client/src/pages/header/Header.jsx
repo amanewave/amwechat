@@ -5,7 +5,6 @@ import { Button } from '../../components/button/Button'
 import { Modal } from '../../components/modal/Modal';
 import { SearchBar } from '../../components/search/Search';
 
-
 export const Header = () => {
     const [btnValue, setBtnValue] = useState('Войти')
     const [modalActive , setModalActive] = useState(false)

@@ -6,7 +6,7 @@ import ProfileIcon from '../../assets/profile.svg'
 const chats = [
 	{
 		img: ProfileIcon,
-		username: 'Андрюха',
+		username: 'Андрюха_theking_ultra_React_Javascripter',
 		id: 1,
 	},
 	{
@@ -27,7 +27,7 @@ const chats = [
 	{
 		img: ProfileIcon,
 		username: 'некит',
-		id: 5,
+		id: 'aflkafsklfas ask djaksld as dkaskd ksa kd',
 	},
 	{
 		img: ProfileIcon,

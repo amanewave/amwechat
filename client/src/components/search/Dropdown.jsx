@@ -11,23 +11,25 @@ export const HistoryItem = ({ elem, i, arr, setSearchHistory }) => {
   };
 
   return (
-    <Item
-      onMouseEnter={() => setHistoryElemActive(true)}
-      onMouseLeave={() => setHistoryElemActive(false)}
-    >
-      <ItemWrapper>
-        {elem}
-        {historyElemActive && (
-          <StyledClose src={CloseIcon} 
-          onClick={(e)=>{
-            removeFromHistory()
-            e.stopPropagation()
-                        }
-          } />
-        )}
-      </ItemWrapper>
-    </Item>
-  );
+		<Item
+			onMouseEnter={() => setHistoryElemActive(true)}
+			onMouseLeave={() => setHistoryElemActive(false)}
+		>
+			<ItemWrapper>
+				<ElemWrapper>{elem}</ElemWrapper>
+				{
+					<StyledClose
+						src={CloseIcon}
+						historyElemActive={historyElemActive}
+						onClick={e => {
+							removeFromHistory()
+							e.stopPropagation()
+						}}
+					/>
+				}
+			</ItemWrapper>
+		</Item>
+	)
 };
 
 export const Dropdown = memo(({ searchHistory, setSearchHistory }) => {
@@ -49,13 +51,13 @@ export const Dropdown = memo(({ searchHistory, setSearchHistory }) => {
 });
 
 const Wrapper = styled.div`
-  position: absolute;
-  top: 70px;
-  outline: 2px solid #aacbcb;
-  border-radius: 22px;
-  width: 100%;
-  background-color: #4d4e4e;
-`;
+	position: absolute;
+	top: 70px;
+	outline: 2px solid #aacbcb;
+	border-radius: 22px;
+	width: 100%;
+	background-color: #4d4e4e;
+`
 
 const DropdownContent = styled.div`
   position: relative;
@@ -66,26 +68,33 @@ const DropdownContent = styled.div`
 `;
 
 const Item = styled.div`
-  font-size: 18px;
-  font-family: sans-serif;
-  padding: 1px;
-  color: white;
-  font-weight: 100;
-  padding-left: 20px;
-  &:hover {
-    color: red;
-  }
-`;
+	font-size: 18px;
+	font-family: sans-serif;
+	padding: 1px;
+	color: white;
+	font-weight: 100;
+	padding-left: 20px;
+	&:hover {
+		color: red;
+	}
+`
 
 const StyledClose = styled.img`
-  width: 20px;
-  margin-right: 20px;
-  &:hover {
-    cursor: pointer;
-  }
-`;
+	width: 20px;
+	margin-right: 20px;
+	visibility: ${props => (props.historyElemActive ? 'visible' : 'hidden')};
+	&:hover {
+		cursor: pointer;
+	}
+`
 
 const ItemWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
+	display: flex;
+	justify-content: space-between;
+  max-width:100%;
+`
+const ElemWrapper = styled.div`
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+`

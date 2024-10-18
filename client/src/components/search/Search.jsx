@@ -11,6 +11,9 @@ export const SearchBar = () => {
   const [searchHistory, setSearchHistory] = useState([]);
 
   const submitSearch = (e) => {
+    if(!e.target.value.trim()){
+      return
+    }
     if (e.key === "Enter") {
       const value = e.target.value;
       setSearchValue(value);
