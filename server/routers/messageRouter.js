@@ -5,8 +5,8 @@ const accessMiddleware = require('../middleware/accessMiddleware.js')
 
 router.use(accessMiddleware)
 
-router.post('/sendMessage',messageController.sendMessage)
-router.get('/getChatMessages/:id', messageController.getChatMessages)
-router.get('/getChats', messageController.getChats) 
+router.post('/sendMessage', accessMiddleware,messageController.sendMessage)
+router.get('/getChatMessages/:id',accessMiddleware, messageController.getChatMessages)
+router.get('/getChats',accessMiddleware, messageController.getChats) 
 
 module.exports = router

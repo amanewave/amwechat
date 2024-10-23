@@ -13,15 +13,12 @@ const generateAccessToken = (id, username) => {
 class userController {
 	async register(req, res) {
 		const password = req.body.password
+		console.log(req.body.password);
 		try {
 			const hashPassword = bcrypt.hashSync(password, 8)
 			const insertQuery =
 				'INSERT INTO user (username, password, age, email) VALUES (?, ?, ?, ?)'
 			const selectQuery = 'SELECT * FROM user'
-
-
-
-			
 
 			await new Promise((resolve, reject) => {
 				req.db(
@@ -56,8 +53,7 @@ class userController {
 			const dbUserName = users[users.length - 1].username
 
 			const token = generateAccessToken(dbId, dbUserName)
-			
-			return res.cookie('acessToken', token, { maxAge: 900000, httpOnly: true }).json('access true')
+			return res.cookie('acessToken', token, { maxAge: 900000, httpOnly: true }).json({success: true})
 		} catch (e) {
 			console.error(e)
 			return res.json({ message: 'Error' })
@@ -84,14 +80,15 @@ class userController {
 					return res.json({ message: 'incorrect password' })
 				}
 
-				res.cookie
 
 				const dbUserName = result[0].username
 				const dbId = result[0].id_user
 				
 				const token = generateAccessToken(dbId, dbUserName)
 
-				return res.json(token)
+				return res
+					.cookie('acessToken', token, { maxAge: 900000, httpOnly: true })
+					.json({ success: true })
 			})
 		} catch (e) {
 			console.log(e)
@@ -138,7 +135,19 @@ class userController {
 		}
 	}
 
-	async test(req, res) {}
+	async getMe(req, res) {
+		try{
+			const token = req.cookies.acessToken
+			const decoded = jwt.decode(token)
+			console.log(decoded)
+			return res.json({decoded})
+		} catch (e) {
+			console.log(e);
+		}
+	}
+
+	
+
 }
 
 module.exports = new userController()

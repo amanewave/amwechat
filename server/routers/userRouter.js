@@ -8,6 +8,6 @@ router.get('/getUser/:id', userController.getUser)
 router.get('/getUsers',accessMiddleware,userController.getUsers)
 router.post('/login',userController.login)
 router.post('/changePassword',userController.changePassword)
-router.post('/test', userController.test)
+router.get('/getMe',accessMiddleware, userController.getMe)
 
 module.exports = router
