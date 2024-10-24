@@ -21,6 +21,8 @@ class messageController {
 				res.json(result)
 			})
 		} catch (e) {
+            console.log(e);
+            
 			return res.json({ message: 'error' })
 		}
 	}

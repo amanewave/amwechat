@@ -8,15 +8,6 @@ import { useNavigate } from 'react-router-dom';
 import { useUnit } from 'effector-react';
 
 export const RegForm = ({auth,setAuth}) => {
-	const store = useUnit($login)
-
-	const navigate = useNavigate()
-
-	useEffect(() => {
-		if (!Object.keys(store).length) return
-		navigate('/profile')
-	}, [store])
-
 	const [formData, setFormData] = useState({
 		username:"",
 		password:"",

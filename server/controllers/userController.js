@@ -146,7 +146,13 @@ class userController {
 		}
 	}
 
-	
+	async logOut(req, res) {
+		try {
+			return res.clearCookie('acessToken').json('logout true')
+		} catch (e) {
+			console.log(e);
+		}
+	}
 
 }
 

@@ -9,14 +9,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 export const LogForm = ({auth, setAuth}) => {
-	const store = useUnit($login)
-
-	const navigate = useNavigate()
-
-	useEffect(()=>{
-		if (!Object.keys(store).length) return
-		navigate('/profile')
-	},[store])
+	
 
 	const [formData, setFormData] = useState({
 		username: '',

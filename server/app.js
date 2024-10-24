@@ -29,15 +29,6 @@ app.get('/',(req, res)=>{
     res.send('jasd')
 })
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'qwe123',
-    database: 'amwechat',
-})
-
-connection.connect()
-
 const server = async() => {
     try{
         

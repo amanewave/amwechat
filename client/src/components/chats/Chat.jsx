@@ -25,6 +25,9 @@ export const Chat = ({chatWith}) => {
                 </ChatHeader>
             </ChatInfo>
 
+            
+
+
         </ChatWrapper>
     );
 };
